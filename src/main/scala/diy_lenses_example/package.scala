@@ -9,4 +9,15 @@ package object diy_lenses_example {
     )
   }
 
+  // Lens laws
+
+  // Identity 
+  def getSet[S, A](lens: Lens[S, A], s: S): Boolean = lens.set(s, lens.get(s)) == s
+
+  // Retention 
+  def setGet[S, A](lens: Lens[S, A], s: S, a: A): Boolean = lens.get(lens.set(s, a)) == a
+
+  // Double set 
+  def putPut[S, A](lens: Lens[S, A], s: S, a: A, b: A): Boolean = lens.get(lens.set(lens.set(s, a), b)) == b
+
 }

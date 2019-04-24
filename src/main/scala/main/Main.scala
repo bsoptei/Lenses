@@ -7,6 +7,7 @@ import vanilla_example.VanillaExample
 object Main {
   def main(args: Array[String]): Unit = {
     VanillaExample.run()
+    DIYLensesExample.verifyLaws()
     DIYLensesExample.run()
     MonocleExample.run()
   }

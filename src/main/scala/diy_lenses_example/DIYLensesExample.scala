@@ -13,9 +13,17 @@ object DIYLensesExample {
   // Composite
   private val bondIssuerId = bondIssue composeLens issuerFromIssue composeLens idFromIssuer
 
-  def run(): Unit = {
-    val testBond = exampleBond
+  private val testBond = exampleBond
 
+  def verifyLaws(): Unit = {
+    Seq(
+      getSet(bondIssuerId, testBond),
+      setGet(bondIssuerId, testBond, "abcdef123456"),
+      putPut(bondIssuerId, testBond, "ghijkl123456", "mnopqr123456")
+    ).foreach(assert)
+  }
+
+  def run(): Unit = {
     // Get issuer id string from a bond
     val issuerId: String = bondIssuerId.get(testBond)
 
