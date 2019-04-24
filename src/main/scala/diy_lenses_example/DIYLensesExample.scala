@@ -17,7 +17,7 @@ object DIYLensesExample {
     val testBond = exampleBond
 
     // Get issuer id string from a bond
-    val issuerId: String = bondIssuerId.get(exampleBond)
+    val issuerId: String = bondIssuerId.get(testBond)
 
     // Update the issuer id's string component
     val updatedBond = bondIssuerId.set(testBond, "garply123456")
